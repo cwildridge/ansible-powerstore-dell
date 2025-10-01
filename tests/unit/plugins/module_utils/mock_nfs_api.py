@@ -364,4 +364,4 @@ class MockNfsApi:
 
     @staticmethod
     def add_invalid_ipv6_hosts_failed_msg():
-        return "Along with alphanumeric characters, only special characters allowed are"
+        return "Allowed characters: a-z, A-Z, 0-9, _, /, ., -, :, @"
