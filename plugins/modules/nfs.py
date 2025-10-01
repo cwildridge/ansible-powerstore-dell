@@ -902,11 +902,12 @@ class PowerStoreNfsExport(object):
         # Check if valid FQDN/IP is provided
         regex = re.compile(r'^[a-zA-Z0-9_/.\-:@]+$')
         for host_type in host_type_list:
-            host = host.strip()
             if self.module.params[host_type]:
                 for host in self.module.params[host_type]:
+                    host = host.strip()
                     if regex.match(host) is None:
-                        error_msg = f"Invalid host '{host}'. Allowed characters: a-z, A-Z, 0-9, _, /, ., -, :, @"
+                        error_msg = f"Invalid host '{host}'. "\
+                          "Allowed characters: a-z, A-Z, 0-9, _, /, ., -, :, @"
                         self.module.fail_json(msg=error_msg)
 
         if self.module.params['host_state'] and all(
